@@ -1,0 +1,9 @@
+{
+  "name": "jumpstart-css",
+  "version": "1.0.0",
+  "description": "A global CSS foundation for every project",
+  "author": "Mike Donahue",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {}
+}
