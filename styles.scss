@@ -5,9 +5,9 @@
 @import "settings/settings";
 
 // Packages
-@import "media-queries/media-queries";
+@import "helpers/media-queries/media-queries";
+@import "helpers/grid/grid";
 @import "fonts/fonts";
-@import "grid/grid";
 @import "theme";
 
 // Utilities

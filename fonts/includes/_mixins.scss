@@ -15,7 +15,7 @@
     $htmlClass: nth($key, 1);
     $properties: nth($key, 2);
 
-    .#{$font-class-prefix}-#{$htmlClass} {
+    .#{$class-prefix}-text-#{$htmlClass} {
       @each $property in $properties {
         $cssProperty: nth($property, 1);
         $responsiveValues: nth($property, 2);

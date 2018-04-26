@@ -6,7 +6,7 @@
   $tag: nth($key, 1);
   $properties: nth($key, 2);
 
-  .#{$font-class-prefix}-static-#{$tag} {
+  .#{$class-prefix}-fixed-text-#{$tag} {
     @each $property in $properties {
       #{nth($property, 1)}: nth($property, 2);
     }
