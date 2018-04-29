@@ -1,27 +1,38 @@
-// Given a value for a column or row, sets property to X frs
-// Given a set of values, will pass those values through
+// Repeats a value X amount of times
 //
-// @param $values {Number|CSS Values} - A single number or set of valid grid column values
+// @param $times {Number} - The number of times to repeat the value
+// @param $value {CSS Value} - A valid value with units
 //
 // Usage:
-//   @include get-grid-values(4);
-//     >> 1fr 1fr 1fr 1fr
-//
-//   @include get-grid-values(50px 1fr);
-//     >> 50px 1fr
-@function get-grid-values($values) {
-  $value: 1fr;
-  $result: '';
+//   repeat(4, 1fr);
+@function repeat($repeat, $value) {
+  $list: ();
 
-  @if ($values == 1) {
-    $result: $value;
-  } @else if (length($values) == 1) {
-    @for $i from 1 through $values - 1 {
-      @if $i == 1 { $result: #{$value} }
-      $result: #{$result} #{$value};
+  @for $i from 1 through $repeat {
+    $list: append($list, $value, space);
+  }
+
+  @return $list;
+}
+
+// Generates the correct amount of grid tracks for IE
+//
+// @param $values {CSS Value} - A set of col / row values with units
+// @param $value {CSS Value} - A valid value with units for grid-gap
+//
+// Usage:
+//   ms-set-tracks(50px 1fr 15em, 16px);
+@function ms-set-tracks($values, $gap) {
+  $result: ();
+
+  @each $value in $values {
+    $result: if(type-of($value) == list, join($result, $value), append($result, $value));
+  }
+
+  @if (length($values) > 1) {
+    @for $i from 1 through length($result) - 1 {
+      $result: set-nth($result, $i, nth($result, $i) $gap);
     }
-  } @else {
-    $result: $values;
   }
 
   @return $result;
