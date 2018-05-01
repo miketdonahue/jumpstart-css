@@ -1,34 +1,34 @@
 // Layout Helpers
 // --------------
 .#{$class-prefix} {
-  &-grid-container {
-    padding: map-get($grid-container, "base");
+  &-grid-bleed {
+    margin: -(map-get($grid-margins, 'base'));
   }
 
-  &-grid-container-x {
-    padding: 0 map-get($grid-container, "base");
+  &-grid-bleed-x {
+    margin: 0 (-(map-get($grid-margins, 'base')));
   }
 
-  &-grid-container-y {
-    padding: map-get($grid-container, "base") 0;
+  &-grid-bleed-y {
+    margin: -(map-get($grid-margins, 'base')) 0;
   }
 }
 
 @each $breakpoint in map-keys($breakpoints) {
   @media (min-width: map-get($breakpoints, $breakpoint)) {
-    $spacing-value: map-get($grid-container, $breakpoint);
+    $spacing-value: map-get($grid-margins, $breakpoint);
 
     .#{$class-prefix} {
-      &-grid-container {
-        padding: $spacing-value;
+      &-grid-bleed {
+        margin: -($spacing-value);
       }
 
-      &-grid-container-x {
-        padding: 0 $spacing-value;
+      &-grid-bleed-x {
+        margin: 0 (-($spacing-value));
       }
 
-      &-grid-container-y {
-        padding: $spacing-value 0;
+      &-grid-bleed-y {
+        margin: -($spacing-value) 0;
       }
     }
   }
