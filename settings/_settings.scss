@@ -26,6 +26,7 @@ $body-background-color: white !default;
 $base-font-weight: 400 !default;
 $base-font-family: "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans"," Helvetica Neue", sans-serif !default;
 $brand-font-family: "Montserrat", $base-font-family !default;
+
 $static-font-sizes: (
   lg: (
     font-size:    2.250em,   // ~36px
@@ -44,6 +45,7 @@ $static-font-sizes: (
     line-height:  1.214em,   // ~17px
   )
  ) !default;
+
 $responsive-font-sizes: (
   lg: (
     font-size: (
