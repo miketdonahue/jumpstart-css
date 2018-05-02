@@ -16,18 +16,19 @@
 
 @each $breakpoint in map-keys($breakpoints) {
   @media (min-width: map-get($breakpoints, $breakpoint)) {
+    $breakpoint-abbr: map-get($breakpoint-to-abbr, $breakpoint);
     $spacing-value: map-get($grid-margins, $breakpoint);
 
     .#{$class-prefix} {
-      &-grid-bleed {
+      &-grid-bleed-#{$breakpoint-abbr} {
         margin: -($spacing-value);
       }
 
-      &-grid-bleed-x {
+      &-grid-bleed-x-#{$breakpoint-abbr} {
         margin: 0 (-($spacing-value));
       }
 
-      &-grid-bleed-y {
+      &-grid-bleed-y-#{$breakpoint-abbr} {
         margin: -($spacing-value) 0;
       }
     }

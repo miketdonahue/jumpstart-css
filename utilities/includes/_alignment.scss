@@ -1,0 +1,35 @@
+// Alignment Helpers
+// -----------------
+.#{$class-prefix} {
+  &-text-left {
+    text-align: left;
+  }
+
+  &-text-center {
+    text-align: center;
+  }
+
+  &-text-right {
+    text-align: right;
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    $breakpoint-abbr: map-get($breakpoint-to-abbr, $breakpoint);
+
+    .#{$class-prefix} {
+      &-text-left-#{$breakpoint-abbr} {
+        text-align: left;
+      }
+
+      &-text-center-#{$breakpoint-abbr} {
+        text-align: center;
+      }
+
+      &-text-right-#{$breakpoint-abbr} {
+        text-align: right;
+      }
+    }
+  }
+}
