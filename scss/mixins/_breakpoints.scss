@@ -1,0 +1,19 @@
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+//
+// @param $breakpoint {String} - A name of a breakpoint
+// @param $breakpoints {Map} - Map of breakpoints
+//
+// Usage:
+//  @include min-width-media-query('md', (xs: 0, sm: 576px, ...));
+@mixin min-width-media-query($breakpoint, $breakpoints: $breakpoints) {
+  $min: breakpoint-min($breakpoint, $breakpoints);
+
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

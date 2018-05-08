@@ -1,0 +1,24 @@
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+// @param $breakpoint {String} - A name of a breakpoint
+// @param $breakpoints {Map} - Set of breakpoints
+//
+// Usage:
+//  breakpoint-min('sm', (xs: 0, sm: 576px, ...));
+@function breakpoint-min($breakpoint, $breakpoints: $breakpoints) {
+  $min: map-get($breakpoints, $breakpoint);
+
+  @return if($min != 0, $min, null);
+}
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
+// Useful for making responsive utilities.
+//
+// @param $breakpoint {String} - A name of a breakpoint
+// @param $breakpoints {Map} - Set of breakpoints
+//
+// Usage:
+//  breakpoint-suffix('sm', (xs: 0, sm: 567px, ...));
+@function breakpoint-suffix($breakpoint, $breakpoints: $breakpoints) {
+  @return if(breakpoint-min($breakpoint, $breakpoints) == null, "", "-#{$breakpoint}");
+}

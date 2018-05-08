@@ -1,0 +1,50 @@
+// Layout Helpers
+// --------------
+@each $breakpoint in map-keys($breakpoints) {
+  @include min-width-media-query($breakpoint) {
+    $spacing-value: map-get($grid-margins, $breakpoint);
+    $suffix: breakpoint-suffix($breakpoint, $breakpoints);
+
+    .#{$class-prefix} {
+      &-grid-bleed-none#{$suffix} {
+        margin: 0 $spacing-value;
+      }
+
+      &-grid-bleed#{$suffix} {
+        margin: -($spacing-value);
+      }
+
+      &-grid-bleed-x#{$suffix} {
+        margin: 0 (-($spacing-value));
+      }
+
+      &-grid-bleed-y#{$suffix} {
+        margin: -($spacing-value) 0;
+      }
+
+      &-float-none#{$suffix} {
+        float: none;
+      }
+
+      &-float-left#{$suffix} {
+        float: left;
+      }
+
+      &-float-right#{$suffix} {
+        float: right;
+      }
+    }
+  }
+}
+
+// Non-Responsive Layout Helpers
+// -----------------------------
+.#{$class-prefix} {
+  &-clearfix {
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+}

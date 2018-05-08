@@ -1,0 +1,25 @@
+// Dependencies
+@import "settings";
+@import "functions";
+@import "mixins";
+
+// Static Fonts
+// ------------
+@each $key in $static-font-sizes {
+  $tag: nth($key, 1);
+  $properties: nth($key, 2);
+
+  .#{$class-prefix}-fixed-text-#{$tag} {
+    @each $property in $properties {
+      #{nth($property, 1)}: nth($property, 2);
+    }
+  }
+}
+
+// Responsive Fonts
+// ----------------
+@each $breakpoint in map-keys($breakpoints) {
+  @include min-width-media-query($breakpoint) {
+    @include fluid-fonts-sizes($breakpoint);
+  }
+}

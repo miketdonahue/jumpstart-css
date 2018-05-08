@@ -4,8 +4,6 @@
 // @param $grid-margins {Map} - A map of responsive grid margin values
 // @param $breakpoints {Map} - A map of responsive breakpoint values
 //
-// ** The default values for $grid-margins and $breakpoints come from global settings **
-//
 // Usage:
 //   @include grid-margin(false);
 @mixin grid-margin(
@@ -17,7 +15,7 @@
     margin: 0 map-get($grid-margins, 'base');
 
     @each $breakpoint in map-keys($breakpoints) {
-      @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @include min-width-media-query($breakpoint) {
         margin: 0 map-get($grid-margins, $breakpoint);
       }
     }

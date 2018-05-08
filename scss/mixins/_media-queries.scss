@@ -1,0 +1,31 @@
+// Creates min-width media queries given a breakpoint
+//
+// @param $breakpoint {String} - A breakpoint name
+// @param $breakpoints {Map} - A map of breakpoints
+//
+// Usage:
+//   @include responsive("md-and-up") {
+//     .foo { color: red; }
+//   }
+@mixin responsive($breakpoint, $breakpoints: $breakpoints) {
+  @if $breakpoint == "sm-and-up" {
+    @media (min-width: map-get($breakpoints, "sm")) {
+      @content;
+    }
+  }
+  @else if ($breakpoint == "md-and-up") {
+    @media (min-width: map-get($breakpoints, "md")) {
+      @content;
+    }
+  }
+  @else if ($breakpoint == "lg-and-up") {
+    @media (min-width: map-get($breakpoints, "lg")) {
+      @content;
+    }
+  }
+  @else if ($breakpoint == "xl-and-up") {
+    @media (min-width: map-get($breakpoints, "xl")) {
+      @content;
+    }
+  }
+}
